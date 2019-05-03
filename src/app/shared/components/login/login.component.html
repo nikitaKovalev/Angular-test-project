@@ -1,0 +1,29 @@
+<form [formGroup]="formAuth" (ngSubmit)="onSubmit()">
+  <div class="example-container">
+    <mat-form-field>
+      <input
+        matInput
+        required
+        formControlName="login"
+        placeholder="Login"/>
+      <mat-icon matSuffix>assignment_ind</mat-icon>
+      <mat-error *ngIf="isControlInvalid('login')">login error</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        required
+        formControlName="password"
+        placeholder="Password"
+        [type]="hide ? 'password' : 'text'">
+      <mat-icon
+        matSuffix
+        (click)="showPassword()">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+      <mat-error *ngIf="isControlInvalid('password')">password error</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary">OK</button>
+  </div>
+</form>
+

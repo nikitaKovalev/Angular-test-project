@@ -1,0 +1,39 @@
+<app-loader *ngIf="!loaded"></app-loader>
+
+<app-pagination [pagination]="pagination"></app-pagination>
+
+<button
+  mat-icon-button
+  routerLink="add"
+  class="pull-right">
+  <mat-icon>add</mat-icon>
+</button>
+
+<ng-container *ngIf="loaded">
+  <!--search-->
+  <mat-form-field *ngIf="pagination.results">
+    <input type="search"
+           matInput
+           (keydown.enter)="searchParams()"
+           name="search"
+           [(ngModel)]="searchText">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <!--item-->
+  <mat-card
+    [ngClass]="{'done': result.done}"
+    *ngFor="let result of pagination.results">
+    <mat-card-header>
+      <div mat-card-avatar></div>
+      <mat-card-title routerLink="details/{{ result.id }}">{{ result.subject }}</mat-card-title>
+      <mat-card-subtitle>{{ result.created_at | date: 'dd.mm.yyyy' }}</mat-card-subtitle>
+      <div class="space"></div>
+      <button
+        mat-icon-button
+        (click)="result.done = !result.done; changeStatus(result.id, result)">
+        <mat-icon>{{ result.done ? 'check_box' : 'check_box_outline_blank' }}</mat-icon>
+      </button>
+    </mat-card-header>
+  </mat-card>
+</ng-container>

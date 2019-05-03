@@ -1,0 +1,36 @@
+<app-loader *ngIf="!loaded"></app-loader>
+
+<ng-container *ngIf="loaded">
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar></div>
+      <mat-card-title>{{ task.subject }}</mat-card-title>
+      <mat-card-subtitle>{{ task.created_at | date: 'dd.mm.yyyy' }}</mat-card-subtitle>
+      <div class="space"></div>
+      <button
+        mat-icon-button
+        (click)="openEditor()">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>{{ task.description }}</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button
+        mat-icon-button
+        (click)="goBack()">
+        <mat-icon>arrow_back_ios</mat-icon>
+      </button>
+      <div class="flex-spacer"></div>
+      <button
+        mat-icon-button
+        (click)="delete()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+
+  </mat-card>
+</ng-container>

@@ -1,0 +1,12 @@
+.container {
+  margin: 50px auto;
+  width: 400px;
+}
+
+.container > * {
+  width: 100%;
+}
+
+button {
+  margin-bottom: 5px;
+}

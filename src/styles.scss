@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+body {
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.space {
+  flex: 1 1 auto;
+}
+
+.pull-right {
+  float: right;
+}
+
+.mat-card {
+  max-width: 300px;
+  margin: auto;
+}
+
+.mat-card-avatar {
+  background-image: url('https://pp.userapi.com/c847016/v847016790/1d59ae/e5k6kbfvmWg.jpg');
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.mat-card-actions {
+  display: flex;
+}
+
+.mat-card-actions .flex-spacer {
+  width: 100%;
+}

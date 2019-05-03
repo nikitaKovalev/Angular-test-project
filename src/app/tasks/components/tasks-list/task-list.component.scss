@@ -1,0 +1,32 @@
+.mat-card {
+  max-width: 400px;
+  margin: 10px auto;
+}
+
+.mat-card-title {
+  cursor: pointer;
+}
+
+.mat-card-actions {
+  display: flex;
+}
+
+.mat-card-actions .flex-spacer {
+  width: 100%;
+}
+
+.mat-card-avatar {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/250px-Angular_full_color_logo.svg.png');
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+mat-form-field {
+  margin: 10px auto;
+  display: block;
+  max-width: 400px;
+}
+
+.done {
+  background: #69f0ae;
+}

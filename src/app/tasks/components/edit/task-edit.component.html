@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Edit Task:</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.subject">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="data.description"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close(true)">No Thanks</button>
+  <button mat-button (click)="onSave()">Ok</button>
+</div>
+

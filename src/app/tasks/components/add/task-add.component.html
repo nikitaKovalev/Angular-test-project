@@ -1,0 +1,47 @@
+<form [formGroup]="taskAddForm" (ngSubmit)="addTask(taskAddForm.value)">
+  <div class="container">
+    <mat-form-field appearance="outline">
+      <mat-label>Insert project name:</mat-label>
+      <input
+        matInput
+        formControlName="subject">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Insert project description:</mat-label>
+      <textarea
+        matInput
+        formControlName="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Choose employee:</mat-label>
+      <input
+        matInput
+        formControlName="employee">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             [matDatepicker]="picker"
+             placeholder="Choose a date:"
+             formControlName="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <button
+      color="primary"
+      mat-raised-button>ADD
+    </button>
+    <button
+      color="primary"
+      mat-raised-button
+      type="button"
+      (click)="goBack()">BACK
+    </button>
+
+  </div>
+</form>
+
+{{ taskAddForm.value | json }}
