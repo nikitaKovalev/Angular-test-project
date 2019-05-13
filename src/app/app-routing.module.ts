@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './shared/components/login/login.component';
-import { TaskListComponent } from './tasks/components';
-import { HomeComponent, ProfileComponent } from './pages';
+import { BoardComponent, CardComponent, HomeComponent, ListComponent, ProfileComponent } from './pages';
 
 const routes: Routes = [
   {
@@ -16,6 +15,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'board',
+    component: BoardComponent
   },
   {
     path: 'profile',

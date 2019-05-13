@@ -1,0 +1,71 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  font-size: 20px;
+}
+
+.list-container {
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 2em;
+
+}
+
+.column-container {
+  width: 300px;
+  max-width: 100%;
+  margin: 0 10px 25px 0;
+  display: inline-block;
+  vertical-align: top;
+  background-color: RGBA(255, 255, 255, 0.05);
+}
+
+
+mat-card {
+  margin: 1em;
+  cursor: pointer;
+}
+
+.list {
+  border-radius: 6px;
+  //background: #c8e6c9;
+  background: #b3e5fc;
+  padding: 20px;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+a {
+  text-decoration: none;
+  color: dodgerblue;
+}

@@ -10,11 +10,14 @@ import { AuthService } from './shared/services/auth.service';
 })
 export class AppComponent implements OnInit {
 
+  public tasksCounter: number;
+
   constructor(
     private authApi: AuthApiService,
     public auth: AuthService,
     private router: Router
   ) {
+    this.tasksCounter = 0;
   }
 
   ngOnInit() {

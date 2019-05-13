@@ -30,3 +30,24 @@ body {
 .mat-card-actions .flex-spacer {
   width: 100%;
 }
+
+// drag
+.drag-class {
+  background: mediumvioletred;
+}
+
+.movable:not(.drag-class) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.dropZone-entered {
+  background: red;
+}
+
+.dropZone-activated {
+  border: 1px solid mediumvioletred;
+}
+
+.cdk-overlay-pane {
+  pointer-events: none !important;
+}

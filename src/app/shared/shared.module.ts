@@ -12,16 +12,24 @@ import {
 } from '@angular/material';
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthApiService } from './services/auth-api.service';
-import { AuthService } from './services/auth.service';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
+import {
+  AuthApiService,
+  AuthService, DroppableService,
+} from './services';
+import { DraggableDirective, DropZoneDirective, MovableDirective } from './directives';
+import { DroppableDirective } from './directives/droppable.directive';
 
 @NgModule({
   declarations: [
     LoaderComponent,
     PaginationComponent,
     LoginComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    DraggableDirective,
+    MovableDirective,
+    DropZoneDirective,
+    DroppableDirective
   ],
   imports: [
     CommonModule,
@@ -39,15 +47,21 @@ import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.
   exports: [
     LoaderComponent,
     PaginationComponent,
-    LoginComponent
+    LoginComponent,
+    DraggableDirective,
+    MovableDirective,
+    DropZoneDirective,
+    DroppableDirective
   ],
   entryComponents: [
     DeleteDialogComponent
   ],
   providers: [
     AuthApiService,
-    AuthService
+    AuthService,
+    DroppableService
   ],
 })
 export class SharedModule {
 }
+

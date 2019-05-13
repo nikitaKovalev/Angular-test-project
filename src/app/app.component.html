@@ -1,10 +1,10 @@
 <mat-drawer-container autosize class="container">
   <!--боковое меню-->
   <mat-drawer #drawer class="sidenav">
-    <button routerLink="tasks" mat-button color="primary">Tasks</button>
+    <button routerLink="tasks" mat-button color="primary">Tasks {{ tasksCounter }}</button>
     <button routerLink="home" mat-button color="primary">Home</button>
     <button routerLink="profile" mat-button color="primary">Profile</button>
-    <button mat-button color="primary">Projects</button>
+    <button routerLink="board" mat-button color="primary">Board</button>
   </mat-drawer>
   <div class="sidenav-content">
     <!--toolbar - верхнее меню -->

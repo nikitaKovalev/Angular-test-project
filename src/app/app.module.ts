@@ -6,23 +6,37 @@ import { AppComponent } from './app.component';
 
 // Material modules
 import {
-  MatButtonModule, MatCardModule,
-  MatIconModule, MatInputModule,
+  MatButtonModule,
+  MatCardModule,
+  MatIconModule,
+  MatInputModule,
   MatMenuModule,
-  MatSidenavModule, MatTabsModule,
+  MatSidenavModule,
+  MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from './shared/shared.module';
 import { HttpClientXsrfModule } from '@angular/common/http';
-import { HomeComponent, ProfileComponent } from './pages';
+import {
+  HomeComponent,
+  ProfileComponent,
+  BoardComponent,
+  ListComponent,
+  CardComponent,
+} from './pages';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { TasksApiService } from './tasks/services/tasks-api.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ProfileComponent,
+    BoardComponent,
+    ListComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,8 +57,11 @@ import { HomeComponent, ProfileComponent } from './pages';
     MatInputModule,
     MatTabsModule,
     MatCardModule,
+    DragDropModule,
   ],
-  providers: [],
+  providers: [
+    TasksApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -37,5 +37,4 @@ export class TaskListComponent implements OnInit {
     console.log(status);
     this.api.editObject(id, status).subscribe();
   }
-
 }
