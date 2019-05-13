@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="column-container">
+    <div class="list" appDropZone>
+      <h2>todo:</h2>
+      <mat-card *ngFor="let box of list" appDraggable appDroppable>
+        <mat-card-header>
+          <mat-card-title>{{ box.name }}</mat-card-title>
+          <mat-card-subtitle>{{ box.name }}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="column-container">
+    <div class="list" appDropZone>
+      <h2>inprogress:</h2>
+
+      <mat-card *ngFor="let box of dropZoneBox" appDraggable appDroppable>
+        <mat-card-header>
+          <mat-card-title>{{ box.name }}</mat-card-title>
+          <mat-card-subtitle>{{ box.name }}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="column-container">
+    <div class="list" appDropZone>
+      <h2>done:</h2>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<section>
+  <!--
+    <div class="container">
+    <div class="list">
+      <h1>DONE:</h1>
+      <ng-container *ngFor="let task of paginator.results">
+        <mat-card *ngIf="task.done"
+                  (click)="change(task)">
+          <mat-card-title>{{ task.subject }}</mat-card-title>
+          <mat-card-subtitle>{{ task.description }}</mat-card-subtitle>
+        </mat-card>
+      </ng-container>
+    </div>
+
+    <div class="list">
+      <h1>IN PROGRESS:</h1>
+      <ng-container *ngFor="let task of paginator.results">
+        <mat-card *ngIf="!task.done"
+                  (click)="change(task)">
+          <mat-card-title>{{ task.subject }}</mat-card-title>
+          <mat-card-subtitle>{{ task.description }}</mat-card-subtitle>
+        </mat-card>
+      </ng-container>
+    </div>
+  </div>
+  -->
+</section>
+<div class="container">
+  <div class="column-container">
+    <div class="list"
+         (drop)="drop($event)"
+         (dragover)="allowDrop($event)">
+
+      <h2>Heroes:</h2>
+      <mat-card *ngFor="let hero of heroList"
+                draggable="true"
+                id="{{ hero.name }}"
+                (dragstart)="drag($event)"
+                [ngClass]="{'dragging': dragging}">
+        <mat-card-header>
+          <mat-card-title>{{ hero.name }}</mat-card-title>
+          <mat-card-subtitle>{{ hero.name }}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="column-container">
+    <div class="list"
+         (drop)="drop($event)"
+         (dragover)="allowDrop($event)">
+      <h2>Good:</h2>
+    </div>
+  </div>
+
+  <div class="column-container">
+    <div class="list"
+         (drop)="drop($event)"
+         (dragover)="allowDrop($event)">
+      <h2>Evil:</h2>
+    </div>
+  </div>
+</div>
+
