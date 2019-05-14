@@ -7,4 +7,5 @@ export interface ITask {
   due_date: string;
   due_time: string;
   seen_at: string;
+  status: number;
 }

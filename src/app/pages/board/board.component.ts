@@ -1,25 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { GenericPagination } from '../../shared/services/genericPagination';
 import { TasksApiService } from '../../tasks/services/tasks-api.service';
-
-const heroData = [
-  {
-    name: 'Tor',
-    group: 'Good'
-  },
-  {
-    name: 'Hulk',
-    group: 'Good'
-  },
-  {
-    name: 'Loky',
-    group: 'Evil'
-  },
-  {
-    name: 'Tony Stark',
-    group: 'Good'
-  },
-];
+import { ITask } from '../../models';
 
 @Component({
   selector: 'app-board',
@@ -29,12 +11,11 @@ const heroData = [
 export class BoardComponent implements OnInit {
 
   public paginator: GenericPagination;
-  public heroList = [];
   private dragging: boolean;
+  private todo: ITask;
 
   constructor(private api: TasksApiService) {
     this.paginator = new GenericPagination(this.api);
-    this.heroList = heroData;
     this.dragging = false;
   }
 
@@ -46,25 +27,27 @@ export class BoardComponent implements OnInit {
     this.paginator.getList();
   }
 
-  change(task) {
-    task.done = !task.done;
-  }
-
-  allowDrop(event: DragEvent): void {
+  allowDrop(event): void {
     event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+    event.target.style.backgroundColor = 'red';
   }
 
-  drag(event): void {
+  drag(event, todo: ITask): void {
     event.dataTransfer.setData('text', event.target.id);
     this.dragging = true;
+    this.todo = todo;
   }
 
   drop(event): void {
     event.preventDefault();
     const data = event.dataTransfer.getData('text');
     const target = event.target;
+
     if (target.className === 'list') {
-      target.appendChild(document.getElementById(data));
+      // target.appendChild(document.getElementById(data));
+      this.todo.status = parseInt(target.id);
+      this.api.editObject(this.todo.id, this.todo).subscribe();
       event.dataTransfer.clearData();
       this.dragging = false;
     } else {

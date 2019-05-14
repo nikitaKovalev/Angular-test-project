@@ -1,64 +1,87 @@
-<section>
-  <!--
-    <div class="container">
-    <div class="list">
-      <h1>DONE:</h1>
-      <ng-container *ngFor="let task of paginator.results">
-        <mat-card *ngIf="task.done"
-                  (click)="change(task)">
-          <mat-card-title>{{ task.subject }}</mat-card-title>
-          <mat-card-subtitle>{{ task.description }}</mat-card-subtitle>
-        </mat-card>
-      </ng-container>
-    </div>
-
-    <div class="list">
-      <h1>IN PROGRESS:</h1>
-      <ng-container *ngFor="let task of paginator.results">
-        <mat-card *ngIf="!task.done"
-                  (click)="change(task)">
-          <mat-card-title>{{ task.subject }}</mat-card-title>
-          <mat-card-subtitle>{{ task.description }}</mat-card-subtitle>
-        </mat-card>
-      </ng-container>
-    </div>
-  </div>
-  -->
-</section>
 <div class="container">
+
   <div class="column-container">
     <div class="list"
+         id="0"
+         aria-dropeffect="move"
          (drop)="drop($event)"
          (dragover)="allowDrop($event)">
-
-      <h2>Heroes:</h2>
-      <mat-card *ngFor="let hero of heroList"
-                draggable="true"
-                id="{{ hero.name }}"
-                (dragstart)="drag($event)"
-                [ngClass]="{'dragging': dragging}">
-        <mat-card-header>
-          <mat-card-title>{{ hero.name }}</mat-card-title>
-          <mat-card-subtitle>{{ hero.name }}</mat-card-subtitle>
-        </mat-card-header>
-      </mat-card>
+      <h2>TODO:</h2>
+      <ng-container *ngFor="let todo of paginator.results" >
+        <mat-card *ngIf="todo.status === 0"
+                  draggable="true"
+                  id="{{ todo.id }}"
+                  (dragstart)="drag($event, todo)"
+                  [ngClass]="{'dragging': dragging}">
+          <mat-card-header>
+            <mat-card-title>{{ todo.subject }}</mat-card-title>
+            <mat-card-subtitle>{{ todo.status }}</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </ng-container>
     </div>
   </div>
 
   <div class="column-container">
     <div class="list"
+         id="1"
          (drop)="drop($event)"
          (dragover)="allowDrop($event)">
-      <h2>Good:</h2>
+      <h2>IN PROGRESS:</h2>
+      <ng-container *ngFor="let inProgress of paginator.results">
+        <mat-card *ngIf="inProgress.status === 1"
+                  draggable="true"
+                  id="{{ inProgress.id }}"
+                  (dragstart)="drag($event, inProgress)"
+                  [ngClass]="{'dragging': dragging}">
+          <mat-card-header>
+            <mat-card-title>{{ inProgress.subject }}</mat-card-title>
+            <mat-card-subtitle>{{ inProgress.status }}</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </ng-container>
     </div>
   </div>
 
   <div class="column-container">
     <div class="list"
+         id="2"
          (drop)="drop($event)"
          (dragover)="allowDrop($event)">
-      <h2>Evil:</h2>
+      <h2>REVIEW:</h2>
+      <ng-container *ngFor="let review of paginator.results">
+        <mat-card *ngIf="review.status === 2"
+                  draggable="true"
+                  id="{{ review.id }}"
+                  (dragstart)="drag($event, review)"
+                  [ngClass]="{'dragging': dragging}">
+          <mat-card-header>
+            <mat-card-title>{{ review.subject }}</mat-card-title>
+            <mat-card-subtitle>{{ review.status }}</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="column-container">
+    <div class="list"
+         id="3"
+         (drop)="drop($event)"
+         (dragover)="allowDrop($event)">
+      <h2>COMPLETE:</h2>
+      <ng-container *ngFor="let complete of paginator.results">
+        <mat-card *ngIf="complete.status === 3"
+                  draggable="true"
+                  id="{{ complete.id }}"
+                  (dragstart)="drag($event, complete)"
+                  [ngClass]="{'dragging': dragging}">
+          <mat-card-header>
+            <mat-card-title>{{ complete.subject }}</mat-card-title>
+            <mat-card-subtitle>{{ complete.status }}</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </ng-container>
     </div>
   </div>
 </div>
-

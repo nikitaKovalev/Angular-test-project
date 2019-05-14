@@ -28,12 +28,14 @@ export class TaskAddComponent implements OnInit {
       subject: [],
       description: [],
       employee: [],
+      status: [],
       date: [],
     });
   }
 
   addTask(formValue) {
     this.api.addNewObject(formValue).subscribe();
+    this.taskAddForm.reset();
   }
 
   goBack() {

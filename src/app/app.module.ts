@@ -24,7 +24,6 @@ import {
   ProfileComponent,
   BoardComponent,
   ListComponent,
-  CardComponent,
 } from './pages';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TasksApiService } from './tasks/services/tasks-api.service';
@@ -36,7 +35,6 @@ import { TasksApiService } from './tasks/services/tasks-api.service';
     ProfileComponent,
     BoardComponent,
     ListComponent,
-    CardComponent,
   ],
   imports: [
     BrowserModule,

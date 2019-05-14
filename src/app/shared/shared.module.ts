@@ -15,10 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import {
   AuthApiService,
-  AuthService, DroppableService,
+  AuthService,
 } from './services';
-import { DraggableDirective, DropZoneDirective, MovableDirective } from './directives';
-import { DroppableDirective } from './directives/droppable.directive';
 
 @NgModule({
   declarations: [
@@ -26,10 +24,6 @@ import { DroppableDirective } from './directives/droppable.directive';
     PaginationComponent,
     LoginComponent,
     DeleteDialogComponent,
-    DraggableDirective,
-    MovableDirective,
-    DropZoneDirective,
-    DroppableDirective
   ],
   imports: [
     CommonModule,
@@ -48,10 +42,6 @@ import { DroppableDirective } from './directives/droppable.directive';
     LoaderComponent,
     PaginationComponent,
     LoginComponent,
-    DraggableDirective,
-    MovableDirective,
-    DropZoneDirective,
-    DroppableDirective
   ],
   entryComponents: [
     DeleteDialogComponent
@@ -59,7 +49,6 @@ import { DroppableDirective } from './directives/droppable.directive';
   providers: [
     AuthApiService,
     AuthService,
-    DroppableService
   ],
 })
 export class SharedModule {

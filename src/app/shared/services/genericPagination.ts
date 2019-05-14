@@ -18,7 +18,7 @@ export class GenericPagination {
   }
 
   public getList() {
-    this.api.getListWithParams(this.pageNumber, 5, { search: this.searchTxt })
+    this.api.getListWithParams(this.pageNumber, 25, { search: this.searchTxt })
       .subscribe((response: IPagination) => {
         this.hasPrev = response.previous;
         this.hasNext = response.next;

@@ -1,28 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
-const list = [
-  {
-    name: 'Box 1'
-  },
-  {
-    name: 'Box 2'
-  },
-  {
-    name: 'Box 3'
-  },
-  {
-    name: 'Box 4'
-  },
-  {
-    name: 'Box 5'
-  },
-];
-
-const dropList = [
-  {
-    name: 'DropZone Box'
-  }
-];
+import { GenericPagination } from '../../../shared/services';
+import { TasksApiService } from '../../../tasks/services/tasks-api.service';
+import { CdkDragDrop, CdkDragEnter, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { IkanbanBoards, ITask } from '../../../models';
+import { KANBANBOARDS } from '../../../mocks/kanbanBoards';
 
 @Component({
   selector: 'app-list',
@@ -31,26 +12,42 @@ const dropList = [
 })
 export class ListComponent implements OnInit {
 
-  private list = [];
-  private dropZoneBox = [];
+  private title: string;
+  public pagination: GenericPagination;
+  private boards: IkanbanBoards[];
 
-  constructor() {
-    this.list = list;
-    this.dropZoneBox = dropList;
+  constructor(private api: TasksApiService) {
+    this.title = 'Dashboard';
+    this.pagination = new GenericPagination(this.api);
+    this.boards = [];
   }
 
   ngOnInit(): void {
+    this.fetchData();
+    this.boards = KANBANBOARDS;
   }
 
-  onDragStart($event: PointerEvent): void {
-    console.log('drag start');
+  fetchData(): void {
+    this.pagination.getList();
   }
 
-  onDragMove($event: PointerEvent): void {
-    console.log(`moving X:${$event.clientX} & Y:${$event.clientY}`);
+  onDrop(event: CdkDragDrop<object[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      console.log(event.container.data);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+      if (event.item.moved) {
+        event.item.data.status = parseInt(event.container.id);
+        this.api.editObject(event.item.data.id, event.item.data).subscribe();
+      }
+    }
   }
 
-  onDragEnd($event: PointerEvent): void {
-    console.log('end');
+  entered(event: CdkDragEnter<ITask[]>) {
+    console.log('entered', event.container.id, event.container);
   }
 }

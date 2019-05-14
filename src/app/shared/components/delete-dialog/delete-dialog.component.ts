@@ -24,5 +24,4 @@ export class DeleteDialogComponent {
     this.taskApi.deleteObject(this.data.id)
       .subscribe(() => this.location.back());
   }
-
 }

@@ -1,32 +1,25 @@
 <div class="container">
-  <div class="column-container">
-    <div class="list" appDropZone>
-      <h2>todo:</h2>
-      <mat-card *ngFor="let box of list" appDraggable appDroppable>
-        <mat-card-header>
-          <mat-card-title>{{ box.name }}</mat-card-title>
-          <mat-card-subtitle>{{ box.name }}</mat-card-subtitle>
-        </mat-card-header>
-      </mat-card>
-    </div>
-  </div>
+  <h1>{{title}}</h1>
 
-  <div class="column-container">
-    <div class="list" appDropZone>
-      <h2>inprogress:</h2>
+  <div class="list-container" cdkDropListGroup>
+    <div class="column-container" *ngFor="let list of boards">
+      <div class="list"
+           id="{{ list.status }}"
+           cdkDropList
+           [cdkDropListData]="pagination.results"
+           (cdkDropListDropped)="onDrop($event)"
+           (cdkDropListEntered)="entered($event)">
 
-      <mat-card *ngFor="let box of dropZoneBox" appDraggable appDroppable>
-        <mat-card-header>
-          <mat-card-title>{{ box.name }}</mat-card-title>
-          <mat-card-subtitle>{{ box.name }}</mat-card-subtitle>
-        </mat-card-header>
-      </mat-card>
-    </div>
-  </div>
-
-  <div class="column-container">
-    <div class="list" appDropZone>
-      <h2>done:</h2>
+        <h2>{{ list.title }}</h2>
+        <ng-container *ngFor="let task of pagination.results">
+          <mat-card *ngIf="task.status === list.status" cdkDrag [cdkDragData]="task">
+            <mat-card-header>
+              <mat-card-title>{{task.subject}}</mat-card-title>
+              <mat-card-subtitle>{{task.description}}</mat-card-subtitle>
+            </mat-card-header>
+          </mat-card>
+        </ng-container>
+      </div>
     </div>
   </div>
 </div>
